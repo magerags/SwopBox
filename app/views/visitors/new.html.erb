@@ -10,12 +10,14 @@
     <%= image_tag "Landing-photo1.jpg", alt: "corporate box", align:"center", width: "100%", class: "photo" %>
     <div class="content">
       <h1>Where Airbnb meets StubHub</h1>
-      <p>Enter your email below and we’ll let you know when SwopBox is ready!</p>
+      <p id="email_label">Enter your email below and we’ll let you know when SwopBox is ready!</p>
       <div class="input">
-      <%= simple_form_for @visitor do |f| %>
-        <%= f.input :email, class: "email", label: false %>
-        <%= f.button :submit, "Submit", class: "submit" %>
+      <%= simple_form_for @visitor, remote: true do |f| %>
+        <%= f.input :email, class: "email", label: false, id: "input_clear" %>
+        <%= f.button :submit, "Submit", class: "submit", onclick: "thankyou()" %>
       <% end %>
+      <i class="fas fa-check" id="check"></i>
+      <p id="thank_you">Thank you! We will be in touch.</p>
       </div>
     </div>
   </div>
@@ -51,3 +53,12 @@
   </div>
 
 </div>
+
+<script>
+function thankyou(element) {
+  document.getElementById("new_visitor").setAttribute('style', 'display: none;');
+  document.getElementById("email_label").setAttribute('style', 'display: none;');
+  document.getElementById("check").setAttribute('style', 'display: block !important;');
+  document.getElementById("thank_you").setAttribute('style', 'display: block !important;');
+}
+</script>

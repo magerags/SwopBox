@@ -10,7 +10,7 @@ class VisitorsController < ApplicationController
     @visitor = Visitor.new(visitor_params)
     @visitor.save
   end
-
+  
   private 
 
   def visitor_params
