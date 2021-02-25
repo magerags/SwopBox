@@ -1,0 +1,53 @@
+<div class="wrapper">
+  <div class="header">
+    <div class="d-flex justify-content-between">
+    <%= image_tag "Swopbox_logo.jpg", alt: "logo", align:"center", height: "120px", class: "logo" %>
+    <%= image_tag "down_graphic.png", alt: "graphic", align:"center", height: "120px", class: "down" %>
+    </div>
+  </div>
+
+  <div class="image">
+    <%= image_tag "Landing-photo1.jpg", alt: "corporate box", align:"center", width: "100%", class: "photo" %>
+    <div class="content">
+      <h1>Where Airbnb meets StubHub</h1>
+      <p>Enter your email below and we’ll let you know when SwopBox is ready!</p>
+      <div class="input">
+      <%= simple_form_for @visitor do |f| %>
+        <%= f.input :email, class: "email", label: false %>
+        <%= f.button :submit, "Submit", class: "submit" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h3>What is it?</h3>
+      <i class="fas fa-cocktail"></i>
+      <p><span class="swop">Swop</span><span class="box">Box</span> is a exclusive platform for swapping corporate event boxes between people.</p>
+    </div>
+
+    <div class="card">
+      <h3>How does it work?</h3>
+      <i class="fas fa-handshake"></i>
+      <p>Sign up and gain access to listed boxes from across the world. You can swap boxes or rent a box outright</p>
+    </div>
+
+    <div class="card">
+      <h3>Why use it?</h3>
+      <i class="fas fa-glass-cheers"></i>
+      <p>Don’t limit yourself to one venue. Don’t let your box sit empty. Get the full experience and benefits with <span class="swop">Swop</span><span class="box">Box</span></p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="left">
+      <p>Contact us</p>
+      <p>Download pitch</p>
+    </div>
+    <div class="right">
+      <p>Copyright © 2021 SwopBox Inc. All rights reserved.</p>
+    </div>
+  </div>
+
+</div>
