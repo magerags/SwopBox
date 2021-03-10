@@ -13,6 +13,17 @@ class BoxesController < ApplicationController
     @box = Box.new
   end
 
+  def create
+    @box = Box.new(box_params)
+    @box.user = current_user
+
+    if @box.save
+      redirect_to boxes_path
+    else
+      render :new
+    end
+  end
+
   def edit
   end 
 
@@ -21,15 +32,6 @@ class BoxesController < ApplicationController
     redirect_to boxes_path
   end
 
-  def create
-    @box = Box.new(box_params)
-
-    if @box.save
-      redirect_to boxes_path
-    else
-      render :new
-    end
-  end
 
   def destroy
     @box.destroy
