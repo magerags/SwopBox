@@ -11,13 +11,14 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @box = Box.find(params[:box_id])
   end
 
   def create
     @event = Event.new(event_params)
-    @event.box = Box.find(params[:id])
+    @event.box = Box.find(params[:box_id])
     if @event.save
-      redirect_to box_path(Box.find(params[:id]))
+      redirect_to box_path(Box.find(params[:box_id]))
     else
       render :new
     end

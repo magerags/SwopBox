@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :visitors, :only => [:new, :create]
-  resources :boxes
-  resources :bookings
-  resources :events
+  resources :boxes do
+    resources :events do 
+      resources :bookings, :only => [:new, :create]
+    end
+  end
+  resources :bookings, only: [:show, :delete, :index]
   resources :reviews
   root to: 'visitors#new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

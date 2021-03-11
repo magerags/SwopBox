@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   
   def index
-    @bookings = Booking.all
+    @bookings = Booking.where(user: current_user)
   end
 
   def show
@@ -11,13 +11,16 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @box = Box.find(params[:box_id])
+    @event = Event.find(params[:event_id])
   end
 
   def create
     @booking = Booking.new(booking_params)
-
-    if @booking.save
-      redirect_to booking_path
+    @booking.event = Event.find(params[:event_id])
+    @booking.user = current_user
+    if @booking.save!
+      redirect_to bookings_path
     else
       render :new
     end
