@@ -16,10 +16,9 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new(user: current_user)
     @booking.event = Event.find(params[:event_id])
-    @booking.user = current_user
-    if @booking.save!
+    if @booking.save
       redirect_to bookings_path
     else
       render :new
@@ -42,7 +41,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :user_id)
+    params.require(:booking).permit(:user_id)
   end
 
   def set_booking

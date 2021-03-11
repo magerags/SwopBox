@@ -3,5 +3,6 @@
 <%= booking.id %>
 <%= booking.event.name %>
 <br>
+<%= link_to "Add a review", new_booking_review_path(booking.id) %>
 <br>
 <% end %>
