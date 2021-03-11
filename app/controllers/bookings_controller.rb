@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   
   def index
-    @booking = Booking.all
+    @bookings = Booking.all
   end
 
   def show
@@ -11,14 +11,6 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-  end
-
-  def edit
-  end 
-
-  def update
-    @booking.update(booking_params)
-    redirect_to booking_path
   end
 
   def create
@@ -29,6 +21,14 @@ class BookingsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+  end 
+
+  def update
+    @booking.update(booking_params)
+    redirect_to booking_path
   end
 
   def destroy
