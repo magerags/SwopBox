@@ -1,4 +1,4 @@
 class Booking < ApplicationRecord
-  belongs_to :box
+  belongs_to :event
   belongs_to :user
 end

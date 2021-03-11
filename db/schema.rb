@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_10_140701) do
+ActiveRecord::Schema.define(version: 2021_03_11_125245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.bigint "box_id", null: false
     t.datetime "start_date"
     t.datetime "end_date"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["box_id"], name: "index_bookings_on_box_id"
+    t.bigint "event_id", null: false
+    t.index ["event_id"], name: "index_bookings_on_event_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 2021_03_10_140701) do
     t.bigint "user_id", null: false
     t.string "name"
     t.index ["user_id"], name: "index_boxes_on_user_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.bigint "box_id", null: false
+    t.string "name"
+    t.string "description"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["box_id"], name: "index_events_on_box_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,7 +70,8 @@ ActiveRecord::Schema.define(version: 2021_03_10_140701) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "bookings", "boxes"
+  add_foreign_key "bookings", "events"
   add_foreign_key "bookings", "users"
   add_foreign_key "boxes", "users"
+  add_foreign_key "events", "boxes"
 end
