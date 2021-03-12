@@ -1,4 +1,6 @@
 <h1><%= @box.name %></h1>
+<%= @box.description %>
+<%= @box.price %>
 
 <%= link_to "create event", new_box_event_path(box_id: @box.id) %>
 
@@ -17,4 +19,19 @@
 <%= link_to "book", new_box_event_booking_path(@box.id, event.id) %>
 <br>
 <br>
+<% end %>
+
+<h1>reviews</h1>
+<% @box.events.each do |event| %>
+<% event.bookings.each do |booking| %>
+<% booking.reviews.each do |review| %>
+<%= review.rating %>
+<br>
+<%= review.description %>
+<br>
+<%= review.booking.user.email %>
+<br>
+<br>
+<% end %>
+<% end %>
 <% end %>
