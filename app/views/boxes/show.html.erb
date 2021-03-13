@@ -1,6 +1,10 @@
 <h1><%= @box.name %></h1>
 <%= @box.description %>
-<%= @box.price %>
+<br>
+£<%= @box.price %>
+
+<br>
+<br>
 
 <%= link_to "create event", new_box_event_path(box_id: @box.id) %>
 
@@ -10,11 +14,7 @@
 <% @box.events.each do |event| %>
 <%= event.name %>
 <br>
-<%= event.description %>
-<br>
 <%= event.start_date %> 
-<br>
-<%= event.end_date %>
 <br>
 <%= link_to "book", new_box_event_booking_path(@box.id, event.id) %>
 <br>
