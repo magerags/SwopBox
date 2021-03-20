@@ -2,7 +2,10 @@
   <div class="header">
     <div class="d-flex justify-content-between">
     <%= image_tag "Swopbox_logo.jpg", alt: "logo", align:"center", height: "120px", class: "logo" %>
-    <%= image_tag "down_graphic.png", alt: "graphic", align:"center", height: "120px", class: "down" %>
+      <div class="login-buttons">
+          <%= link_to "Sign Up", new_user_registration_path, class: "btn button sign-up" %>
+          <%= link_to "Log in", new_user_session_path, class: "btn button login"  %>
+      </div>
     </div>
   </div>
 

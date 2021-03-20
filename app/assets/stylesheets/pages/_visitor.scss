@@ -1,7 +1,4 @@
 // Specific CSS for your home-page
-
-
-
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -13,11 +10,41 @@
   background: white;
 }
 
-.down {
-  position: relative;
-  top: -25px;
-  left: 40px;
+.login-buttons {
+  display: flex;
+  margin-top: 12px;
 }
+
+.button {
+  padding: 0px 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  
+  a:hover {
+    text-decoration: none;
+  }
+  
+};
+
+.login {
+  background-color: #102F47;
+  font-size: 1rem;
+  color: white;
+};
+
+.login:hover {
+  color: white;
+}
+
+.sign-up {
+  padding: 0px 20px;
+  a {
+    color: rgba(50,50,50,1)
+  };
+};
+
 
 .logo {
   position: relative;
