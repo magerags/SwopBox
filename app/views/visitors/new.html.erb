@@ -9,8 +9,7 @@
     </div>
   </div>
 
-  <div class="image">
-    <%= image_tag "Landing-photo1.jpg", alt: "corporate box", align:"center", width: "100%", class: "photo" %>
+  <div class="image" style="background-image: url(<%= asset_path 'Landing-photo1.jpg' %>);">
     <div class="content">
       <h1>Make your corporate box work for you.</h1>
       <p id="email_label">Enter your email below and we’ll let you know when SwopBox is ready!</p>
