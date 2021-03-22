@@ -1,3 +1,5 @@
+<div class="form_wrapper" style="background-image: url(<%= asset_path 'Landing-photo1.jpg' %>);">
+  <div class="form">
 <h2>Log in</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -11,10 +13,12 @@
                 input_html: { autocomplete: "current-password" } %>
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
-
+<div class="form_center_actions">
   <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+    <%= f.button :submit, "Log in", class: "btn-primary" %>
+  </div>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+<p>New to SwopBox? <%= link_to "Join Now!", new_registration_path(resource_name) %></p>
+</div>
+</div>
