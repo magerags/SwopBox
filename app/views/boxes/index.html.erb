@@ -1,10 +1,15 @@
-<h1>Boxes</h1>
+<div class="container">
+<%= render '/shared/navbar' %>
 <br>
-<%= link_to "new box", new_box_path %>
+<%= form_tag boxes_path, method: :get do %>
+<%= text_field_tag :query, params[:query], class: "form-path", placeholder: "Find a box" %>
+<%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
 <br>
 <br>
 <% @boxes.each do |box| %>
-<%= link_to box.name, box_path(box.id) %>
+<div class="box-card">
+<h2><%= link_to box.name, box_path(box.id) %></h2>
 <br>
 <%= box.description %>
 <br>
@@ -12,12 +17,15 @@
 <br>
 <%= box.seats %>
 <br>
-<%= box.price %>
+£<%= box.price %>
 <br>
 <%= link_to "edit", edit_box_path(box.id) %>
 <br>
 <br>
 <br>
+</div>
 <% end %>
 <br><br><br><br><br>
+<%= link_to "new box", new_box_path %>
 <%= link_to "sign out", destroy_user_session_path, method: :delete %>
+</div>

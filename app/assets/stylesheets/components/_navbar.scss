@@ -7,6 +7,17 @@
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.nav-link {
+  font-size: 1.3rem;
+  margin-left: 40px;
+}
+
+.navbar-nav {
+  position: relative;
+  top: 5px;
+}
+
+.navbar {
+  padding: 0px 0px 10px 0px;
+  border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1)
 }
