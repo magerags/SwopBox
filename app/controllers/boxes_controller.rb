@@ -41,7 +41,7 @@ class BoxesController < ApplicationController
   private
 
   def box_params
-    params.require(:box).permit(:name, :description, :venue, :seats, :price, :rating, :location, :user_id)
+    params.require(:box).permit(:name, :description, :venue, :seats, :price, :rating, :location, :user_id, photos: [])
   end
 
   def set_box
