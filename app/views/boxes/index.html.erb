@@ -2,27 +2,38 @@
 <%= render '/shared/navbar' %>
 <br>
 <%= form_tag boxes_path, method: :get do %>
-<%= text_field_tag :query, params[:query], class: "form-path", placeholder: "Find a box" %>
-<%= submit_tag "Search", class: "btn btn-primary" %>
+<%= text_field_tag :query, params[:query], class: "form-path rounded-input", placeholder: "Find a box" %>
+<%= submit_tag "Search", class: "btn btn-primary search-submit" %>
 <% end %>
 <br>
 <br>
 <% @boxes.each do |box| %>
 <div class="box-card">
+<div class="image_holder" style="background-image: url('<%= cl_image_path box.photos.first.key if box.photos.attached? %>')">
+</div>
+<div class="content">
+<div class="title_desc">
 <h2><%= link_to box.name, box_path(box.id) %></h2>
-<br>
-<%= box.description %>
-<br>
-<%= box.venue %>
-<br>
-<%= box.seats %>
-<br>
-£<%= box.price %>
-<br>
-<%= link_to "edit", edit_box_path(box.id) %>
-<br>
-<br>
-<br>
+<p class="line-clamp"><%= box.description %></p>
+</div>
+<div class="details">
+<div class="info">
+<p>Cricket</p>
+<i class="fas fa-circle"></i>
+<p><%= box.seats %> seats</p>
+<i class="fas fa-circle"></i>
+<p><%= box.venue %></p>
+</div>
+<div class="rating_price">
+<div class="rating">
+<i class="fas fa-star"></i>
+<p><%= box.rating %>.7</p>
+</div>
+<p class="price">£<%= box.price %></p>
+</div>
+</div>
+<%# <%= link_to "edit", edit_box_path(box.id) %>
+</div>
 </div>
 <% end %>
 <br><br><br><br><br>
