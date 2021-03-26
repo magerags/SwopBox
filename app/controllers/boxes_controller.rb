@@ -3,7 +3,12 @@ class BoxesController < ApplicationController
   before_action :set_box, only: [:show, :edit, :update, :destroy]
   
   def index
+    if params[:query].present?
+      @query = params[:query]
+      @boxes = Box.where("name LIKE ?", "%#{@query}%")
+    else
     @boxes = Box.all
+    end
   end
 
   def show

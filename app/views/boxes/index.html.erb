@@ -1,12 +1,21 @@
 <div class="container">
 <%= render '/shared/navbar' %>
 <br>
+<div class="topbar">
+<div class="search">
 <%= form_tag boxes_path, method: :get do %>
 <%= text_field_tag :query, params[:query], class: "form-path rounded-input", placeholder: "Find a box" %>
-<%= submit_tag "Search", class: "btn btn-primary search-submit" %>
+<%= submit_tag "",  class: "btn btn-primary search-submit" %>
+<i class="fas fa-search"></i>
+</div>
+<div class="filters d-flex">
+<p class="filter">Under £5k</p>
+<p class="filter">£5k - £10k</p>
+<p class="filter">£10k - £20k</p>
+<p class="filter">Over £20k</p>
+</div>
+</div>
 <% end %>
-<br>
-<br>
 <% @boxes.each do |box| %>
 <div class="box-card">
 <div class="image_holder" style="background-image: url('<%= cl_image_path box.photos.first.key if box.photos.attached? %>')">
