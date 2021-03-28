@@ -25,6 +25,19 @@
   border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1)
 }
 
+#clear {
+  padding: 10px 10px;
+  color: blue!important;
+}
+
+#clear:hover {
+  color: blue!important;
+}
+
+.filters {
+  margin-bottom: 20px;
+}
+
 .filter {
   margin-left: 10px;
   background-color: rgba($color: #000000, $alpha: 0.05);
@@ -32,8 +45,22 @@
   padding: 10px 20px;
 }
 
+.filters a {
+  color:rgba($color: #000000, $alpha: 0.7);
+}
+
+.filters a:hover {
+  text-decoration: none;
+  color: white!important;
+}
+
 .filter:hover {
   background-color: #08B4EE;
   color: white;
   cursor: pointer;
+}
+
+#filled {
+  background-color: #08B4EE;
+  color: white;
 }

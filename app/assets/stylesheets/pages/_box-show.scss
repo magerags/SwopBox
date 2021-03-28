@@ -1,0 +1,79 @@
+.image_holder2 {
+  width: 100%;
+  height: 400px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 15px;
+  margin: 20px 0px;
+}
+
+.description {
+  color: rgba($color: #000000, $alpha: 0.7);
+}
+
+.description2 {
+  color: rgba($color: #000000, $alpha: 0.7);
+  margin-bottom: 0px;
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+}
+
+.left {
+  width: 85%;
+}
+
+.price {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.events {
+  display: flex;
+  padding: 20px 0px;
+  border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+}
+
+.event {
+  padding: 20px;
+  width: 380px;
+  background-color: rgba($color: #000000, $alpha: 0.05);
+  margin: 20px 40px 20px 0px;
+  border-radius: 20px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+
+.date {
+  margin-bottom: 1px;
+  color: rgba($color: #000000, $alpha: 0.7);
+}
+
+.book-button {
+  background-color: #08B4EE;
+  border-radius: 50px;
+  padding: 5px 20px;
+  color: white;
+  position: relative;
+  left: 210px;
+}
+
+.section2 {
+  padding: 20px 0px;
+}
+
+.review {
+  padding: 10px 0px;
+
+ i {
+   color: #08B4EE;
+ }
+}

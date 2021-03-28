@@ -1,37 +1,61 @@
-<h1><%= @box.name %></h1>
-<%= @box.description %>
-<br>
-£<%= @box.price %>
+<div class="container">
+<%= render '/shared/navbar' %>
 
-<br>
-<br>
+<div class="image_holder2" style="background-image: url('<%= cl_image_path @box.photos.first.key if @box.photos.attached? %>')">
+</div>
+<div class="section">
+<div class="left">
+<h2><%= @box.name %></h2>
+<p class="description"><%= @box.description %></p>
+<div class="info">
+<p>Cricket</p>
+<i class="fas fa-circle"></i>
+<p><%= @box.seats %> seats</p>
+<i class="fas fa-circle"></i>
+<p><%= @box.venue %></p>
+</div>
+</div>
+<div class="right">
+<p class="price"> £<%= number_with_delimiter(@box.price, delimiter: ',') %> </p>
+</div>
+</div>
 
-<%= link_to "create event", new_box_event_path(box_id: @box.id) %>
+<%# <%= link_to "create event", new_box_event_path(box_id: @box.id) %> 
 
-<br>
-<br>
-
+<div class="events">
 <% @box.events.each do |event| %>
-<%= event.name %>
-<br>
-<%= event.start_date %> 
-<br>
-<%= link_to "book", new_box_event_booking_path(@box.id, event.id) %>
-<br>
-<br>
+<div class="event">
+<h3><%= event.name %></h3>
+<p class="date"><%= event.start_date.strftime("%A %e %B %Y") %></p> 
+<p class="date"><%= event.start_date.strftime("%l:%M %p") %></p> 
+<%= link_to "Book", new_box_event_booking_path(@box.id, event.id), class: "btn book-button" %>
+</div>
 <% end %>
+</div>
 
-<h1>reviews</h1>
+<div class="section2">
+<p class="description2">3 Reviews</p>
+<div class="rating mb-3">
+<i class="fas fa-star"></i>
+<p><%= @box.rating %>.7</p>
+</div>
 <% @box.events.each do |event| %>
 <% event.bookings.each do |booking| %>
 <% booking.reviews.each do |review| %>
-<%= review.rating %>
-<br>
+<div class="review">
 <%= review.description %>
 <br>
-<%= review.booking.user.email %>
-<br>
-<br>
+<div class="d-flex">
+<% review.rating.to_i.times do  %>
+<i class="fas fa-star"></i>
+<% end %>
+<% review.blank_stars.times do  %>
+<i class="far fa-star"></i>
+<% end %>
+</div>
+</div>
 <% end %>
 <% end %>
 <% end %>
+</div>
+</div>

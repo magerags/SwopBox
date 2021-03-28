@@ -7,15 +7,32 @@
 <%= text_field_tag :query, params[:query], class: "form-path rounded-input", placeholder: "Find a box" %>
 <%= submit_tag "",  class: "btn btn-primary search-submit" %>
 <i class="fas fa-search"></i>
+<% end %>
 </div>
 <div class="filters d-flex">
-<p class="filter">Under £5k</p>
-<p class="filter">£5k - £10k</p>
-<p class="filter">£10k - £20k</p>
-<p class="filter">Over £20k</p>
-</div>
-</div>
+<%= link_to "clear", boxes_path, id: "clear" if params[:query].present? || params[:filter].present? %>
+<% if params[:filter] == "under5" %>
+<a href="/boxes?filter=under5" class="filter" id="filled">Under £5k</a>
+<% else %>
+<a href="/boxes?filter=under5" class="filter">Under £5k</a>
 <% end %>
+<% if params[:filter] == "5to10" %>
+<a href="/boxes?filter=5to10" class="filter" id="filled">£5k - £10k</a>
+<% else %>
+<a href="/boxes?filter=5to10" class="filter">£5k - £10k</a>
+<% end %>
+<% if params[:filter] == "10to20" %>
+<a href="/boxes?filter=10to20" class="filter" id="filled">£10k - £20k</a>
+<% else %>
+<a href="/boxes?filter=10to20" class="filter">£10k - £20k</a>
+<% end %>
+<% if params[:filter] == "over20" %>
+<a href="/boxes?filter=over20" class="filter" id="filled">Over £20k</a>
+<% else %>
+<a href="/boxes?filter=over20" class="filter">Over £20k</a>
+<% end %>
+</div>
+</div>
 <% @boxes.each do |box| %>
 <div class="box-card">
 <div class="image_holder" style="background-image: url('<%= cl_image_path box.photos.first.key if box.photos.attached? %>')">

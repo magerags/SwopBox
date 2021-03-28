@@ -6,8 +6,22 @@ class BoxesController < ApplicationController
     if params[:query].present?
       @query = params[:query]
       @boxes = Box.where("name LIKE ?", "%#{@query}%")
+    elsif params[:filter].present?
+      @filter = params[:filter]
+      case @filter
+      when "under5"
+        @boxes = Box.where("price < 5000")
+      when "5to10"
+        @boxes = Box.where("price > 5000").where("price < 10000")
+      when "10to20"
+        @boxes = Box.where("price > 10000").where("price < 20000 ")
+      when "over20"
+        @boxes = Box.where("price >= 20000")
+      else
+        @boxes = Box.all
+      end
     else
-    @boxes = Box.all
+      @boxes = Box.all
     end
   end
 
