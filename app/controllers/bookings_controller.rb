@@ -21,6 +21,9 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(user: current_user)
     @booking.event = Event.find(params[:event_id])
+    @ticket = Ticket.new(booking: @booking)
+    @booking.tickets << @ticket
+    @ticket.save
     if @booking.save
       redirect_to box_event_bookings_confirmation_path
     else
@@ -38,7 +41,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to booking_path
+    redirect_to bookings_path
   end
 
   private
@@ -48,6 +51,6 @@ class BookingsController < ApplicationController
   end
 
   def set_booking
-    @booking = booking.find(params[:id])
+    @booking = Booking.find(params[:id])
   end
 end
