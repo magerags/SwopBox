@@ -9,6 +9,9 @@ class BookingsController < ApplicationController
   def show
   end
 
+  def confirmation
+  end
+
   def new
     @booking = Booking.new
     @box = Box.find(params[:box_id])
@@ -19,7 +22,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(user: current_user)
     @booking.event = Event.find(params[:event_id])
     if @booking.save
-      redirect_to bookings_path
+      redirect_to box_event_bookings_confirmation_path
     else
       render :new
     end

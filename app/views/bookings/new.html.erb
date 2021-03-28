@@ -1,11 +1,55 @@
 <div class="container">
 <%= render '/shared/navbar' %>
 
-<h1>Booking</h1>
+<h1 class="booking-title">Booking</h1>
 <div class="booking-section d-flex">
-<p class="options">Pay</p>
+<p class="options active">Pay</p>
 <p class="options">Swap</p>
 <p class="options">Partial Swap</p>
 </div>
+<br>
+<div class="booking-section2">
+<div class="left2">
+<div class="prices">
+<div class="d-flex justify-content-between">
+<p class="price-item">Box price</p>
+<p class="price-booking"> £<%= number_with_delimiter(@box.price, delimiter: ',') %> </p>
+</div>
+<div class="d-flex justify-content-between">
+<p class="price-item">Service fee (8%)</p>
+<p class="price-booking"> £<%= number_with_precision(@box.fee, precision: 0, delimiter: ',') %> </p>
+</div>
+<div class="d-flex justify-content-between mt-3 border-top pt-2">
+<p class="price-item">Total to be paid</p>
+<p class="price-booking bold"> £<%= number_with_precision(@box.total, precision: 2, delimiter: ',') %> </p>
+</div>
+</div>
+<div class="fake-form">
+<p>Cardholder name</p>
+<input type="text">
+<p>Card number</p>
+<input type="text">
+<p>Expiry Date</p>
+<input type="text">
+<p>CCV</p>
+<input type="text" class="mb-0">
+</div>
+</div>
+<div class="right2">
+<p class="info-text">You are booking:</p>
+<div class="d-flex">
+<div class="image-holder3" style="background-image: url('<%= cl_image_path @box.photos.first.key if @box.photos.attached? %>')" ></div>
+<div class="other">
+<h3><%= "#{@box.name}" %></h3>
+<br>
+<h5><%= "#{@event.name}" %></h5>
+<p class="date"><%= "#{@event.start_date.strftime("%l:%M %p")}" %>
+<p class="date"><%= "#{@event.start_date.strftime("%A %e %B %Y")}"  %></p>
+</div>
+</div>
+</div>
+</div>
+
+<br>
 <%= render "form" %>
 </div>

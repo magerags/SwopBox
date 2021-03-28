@@ -1,0 +1,22 @@
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+
+  i {
+    color: #4cd64c;
+    font-size: 6rem;
+    margin-bottom: 50px;
+  }
+
+  p {
+    margin-bottom: 2px;
+    color: rgba($color: #000000, $alpha: 0.8);
+    display: block;
+    width: 70%;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+}

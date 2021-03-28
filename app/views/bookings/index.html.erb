@@ -1,8 +1,16 @@
+<div class="container">
 <% @bookings.each do |booking| %>
-<br>
-<%= booking.id %>
-<%= booking.event.name %>
-<br>
+<div class="box-card">
+<div class="image_holder" style="background-image: url('<%= cl_image_path booking.event.box.photos.first.key if booking.event.box.photos.attached? %>')">
+</div>
+<div class="content">
+<h2><%= link_to booking.event.box.name, box_path(booking.event.box.id) %></h2>
+<h3><%= event.name %></h3>
+<p class="date"><%= event.start_date.strftime("%A %e %B %Y") %></p> 
+<p class="date"><%= event.start_date.strftime("%l:%M %p") %></p> 
 <%= link_to "Add a review", new_booking_review_path(booking.id) %>
 <br>
+</div>
+</div>
 <% end %>
+</div>

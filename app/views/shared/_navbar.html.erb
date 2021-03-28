@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
+  <%= link_to "/boxes", class: "navbar-brand" do %>
     <%= image_tag "Swopbox_logo.jpg", alt: "logo", align:"center", height: "100px", class: "logo" %>
     <% end %>
 
@@ -12,10 +12,10 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Boxes", "#", class: "nav-link" %>
+          <%= link_to "Boxes", "/boxes", class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Swaps", "#", class: "nav-link" %>
+          <%= link_to "Bookings", "/bookings", class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
          <%= link_to "Account", "#", class: "nav-link" %>

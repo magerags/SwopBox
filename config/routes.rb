@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :boxes do
     resources :events do 
       resources :bookings, :only => [:new, :create]
+      get "/bookings/confirmation", to: 'bookings#confirmation'
     end
   end
   resources :bookings, only: [:show, :delete, :index] do
