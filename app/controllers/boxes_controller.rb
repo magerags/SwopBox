@@ -5,7 +5,7 @@ class BoxesController < ApplicationController
   def index
     if params[:query].present?
       @query = params[:query]
-      @boxes = Box.where("name LIKE ?", "%#{@query}%")
+      @boxes = Box.where("name LIKE ?", "%#{@query.capitalize}%")
     elsif params[:filter].present?
       @filter = params[:filter]
       case @filter
