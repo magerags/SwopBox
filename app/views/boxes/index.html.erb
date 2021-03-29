@@ -64,6 +64,8 @@
 <% end %>
 <br>
 <br>
-<%# <%= link_to "new box", new_box_path %>
-<%# <%= link_to "sign out", destroy_user_session_path, method: :delete %> 
+<% if current_user == User.find(2) %>
+<%= link_to "new box", new_box_path %>
+<%= link_to "sign out", destroy_user_session_path, method: :delete %> 
+<% end %>
 </div>
