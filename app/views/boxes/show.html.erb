@@ -20,7 +20,7 @@
 </div>
 </div>
 
-<%= link_to "create event", new_box_event_path(box_id: @box.id) if if current_user.id == User.find_by(email: "tomwhittle@hey.com").id %> 
+<%= link_to "create event", new_box_event_path(box_id: @box.id) if current_user.id == User.find_by(email: "tomwhittle@hey.com").id %> 
 
 <div class="events">
 <% @box.events.each do |event| %>
