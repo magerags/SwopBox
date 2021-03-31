@@ -3,8 +3,12 @@
     <div class="d-flex justify-content-between">
     <%= image_tag "Swopbox_logo.jpg", alt: "logo", align:"center", height: "120px", class: "logo" %>
       <div class="login-buttons">
+          <% if user_signed_in? %>
+          <%= link_to "Dashboard", boxes_path, class: "btn button login" %>
+          <% else %>
           <%= link_to "Sign Up", new_user_registration_path, class: "btn button sign-up" %>
           <%= link_to "Log in", new_user_session_path, class: "btn button login"  %>
+          <% end %>
       </div>
     </div>
   </div>
