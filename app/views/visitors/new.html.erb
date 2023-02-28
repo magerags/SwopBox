@@ -14,7 +14,7 @@
   </div>
 
   <div class="image" style="">
-    <video id='video' loop poster='<%= asset_path 'Landing-photo1.jpg' %>'>
+    <video id='video' poster='<%= asset_path 'Landing-photo1.jpg' %>'>
       <source src="/swopbox.mp4" type="video/mp4">
     </video>
     <div class="content" id='opacity'>
@@ -79,4 +79,13 @@ function videoStop(element) {
   document.getElementById("playbutton").setAttribute('style', 'display: block;');
   document.getElementById("opacity").setAttribute('style', 'opacity: 1');
 }
+
+const video = document.getElementById("video")
+
+video.addEventListener('ended', (event) => {
+  document.getElementById("opacity").setAttribute('style', 'opacity: 1');
+    document.getElementById("pausebutton").setAttribute('style', 'display: none;');
+  document.getElementById("playbutton").setAttribute('style', 'display: block;');
+  video.load();
+});
 </script>
