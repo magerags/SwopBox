@@ -13,9 +13,19 @@
     </div>
   </div>
 
-  <div class="image" style="background-image: url(<%= asset_path 'Landing-photo1.jpg' %>);">
-    <div class="content">
+  <div class="image" style="">
+    <video id='video' loop poster='<%= asset_path 'Landing-photo1.jpg' %>'>
+      <source src="/swopbox.mp4" type="video/mp4">
+    </video>
+    <div class="content" id='opacity'>
       <h1>Make your corporate box work for you.</h1>
+      <div id='playbutton' onclick='videoStart()'>
+        <svg fill="#fff" width="140px" height="140px" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" stroke="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M 27.9999 51.9063 C 41.0546 51.9063 51.9063 41.0781 51.9063 28 C 51.9063 14.9453 41.0312 4.0937 27.9765 4.0937 C 14.8983 4.0937 4.0937 14.9453 4.0937 28 C 4.0937 41.0781 14.9218 51.9063 27.9999 51.9063 Z M 23.7109 37.0469 C 22.6327 37.7031 21.4140 37.1875 21.4140 36.0625 L 21.4140 19.9375 C 21.4140 18.8594 22.7030 18.3906 23.7109 18.9766 L 36.8827 26.7812 C 37.8436 27.3437 37.8671 28.6797 36.8827 29.2656 Z"></path></g></svg>
+      </div>
+      <div id='pausebutton' onclick='videoStop()' style="display: none;">
+        <svg fill="#fff" width="140px" height="140px" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" stroke="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M 27.9999 51.9063 C 41.0546 51.9063 51.9063 41.0781 51.9063 28 C 51.9063 14.9453 41.0312 4.0937 27.9765 4.0937 C 14.8983 4.0937 4.0937 14.9453 4.0937 28 C 4.0937 41.0781 14.9218 51.9063 27.9999 51.9063 Z M 21.8593 36.4609 C 20.7812 36.4609 20.3124 35.8984 20.3124 35.0312 L 20.3124 20.9922 C 20.3124 20.1484 20.7812 19.5625 21.8593 19.5625 L 23.9921 19.5625 C 25.0702 19.5625 25.5390 20.1484 25.5390 20.9922 L 25.5390 35.0312 C 25.5390 35.8984 25.0702 36.4609 23.9921 36.4609 Z M 31.9843 36.4609 C 30.9296 36.4609 30.4140 35.8984 30.4140 35.0312 L 30.4140 20.9922 C 30.4140 20.1484 30.9296 19.5625 31.9843 19.5625 L 34.1171 19.5625 C 35.1718 19.5625 35.6640 20.1484 35.6640 20.9922 L 35.6640 35.0312 C 35.6640 35.8984 35.1718 36.4609 34.1171 36.4609 Z"></path></g></svg>
+      </div>
+      <p class='mt-5'>Swap or rent your corporate hospitality box for the best events in the World.</p>
       <p id="email_label">Enter your email below and we’ll let you know when SwopBox is ready!</p>
       <div class="input">
       <%= simple_form_for @visitor, remote: true do |f| %>
@@ -56,5 +66,17 @@ function thankyou(element) {
   document.getElementById("email_label").setAttribute('style', 'display: none;');
   document.getElementById("check").setAttribute('style', 'display: block !important;');
   document.getElementById("thank_you").setAttribute('style', 'display: block !important;');
+}
+function videoStart(element) {
+  document.getElementById("video").play();
+  document.getElementById("playbutton").setAttribute('style', 'display: none;');
+  document.getElementById("pausebutton").setAttribute('style', 'display: block;');
+  document.getElementById("opacity").setAttribute('style', 'opacity: 0');
+}
+function videoStop(element) {
+  document.getElementById("video").pause();
+  document.getElementById("pausebutton").setAttribute('style', 'display: none;');
+  document.getElementById("playbutton").setAttribute('style', 'display: block;');
+  document.getElementById("opacity").setAttribute('style', 'opacity: 1');
 }
 </script>
